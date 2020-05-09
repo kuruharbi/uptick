@@ -1,13 +1,12 @@
 .PHONY: clean-pyc clean-build docs
 
-TAG := $(shell git describe master --abbrev=0)
-TAGSTEEM := $(shell git describe master --abbrev=0 | tr "." "-")
-
-# 
 clean: clean-build clean-pyc
 
 clean-build:
-	rm -fr build/ dist/ *.egg-info .eggs/ .tox/ __pycache__/ .cache/ .coverage htmlcov src
+	rm -fr build/
+	rm -fr dist/
+	rm -fr *.egg-info
+	rm -fr __pycache__/ .eggs/ .cache/ .tox/
 
 clean-pyc:
 	find . -name '*.pyc' -exec rm -f {} +
@@ -16,6 +15,9 @@ clean-pyc:
 
 lint:
 	flake8 uptick/
+
+test:
+	python3 setup.py test
 
 build:
 	python3 setup.py build
@@ -34,10 +36,42 @@ check:
 	python3 setup.py check
 
 dist:
-	python3 setup.py sdist upload -r pypi
-	python3 setup.py bdist_wheel upload
+	python3 setup.py sdist bdist_wheel
+	python3 setup.py bdist_wheel
 
-release: clean check dist steem-changelog git
+upload:
+	twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
 
-steem-changelog:
-	git show -s --pretty=format: $(TAG) | tail -n +4 | piston post --file "-" --author chainsquad --permlink "uptick-changelog-$(TAGSTEEM)" --category uptick --title "[Changelog] Uptick $(TAG)" --tags uptick bitshares changelog
+docs:
+	sphinx-apidoc -d 6 -e -f -o docs . *.py tests
+	make -C docs clean html
+
+docs_store:
+	git add docs
+	-git commit -m "Updating docs/"
+
+release: clean check dist git
+
+authors:
+	git shortlog -e -s -n > AUTHORS
+
+authors_store:
+	git add AUTHORS
+	-git commit -m "Updating Authors"
+
+semver: semver-release semver-updates
+
+semver-release:
+	-semversioner release
+
+semver-updates:
+	semversioner changelog > CHANGELOG.md
+	$(eval CURRENT_VERSION = $(shell semversioner current-version))
+	sed -i "s/^__version__.*/__version__ = \"$(CURRENT_VERSION)\"/" setup.py
+	-git add .changes setup.py CHANGELOG.md
+	-git commit -m "semverioner release updates" --no-verify
+	-git flow release start $(CURRENT_VERSION)
+	git flow release finish $(CURRENT_VERSION)
+
+prerelease: test docs docs_store authors authors_store
+release: prerelease semver clean build check dist upload git

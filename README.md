@@ -1,47 +1,50 @@
-# Uptick for BitShares
+# Uptick
 
 Swiss army knife for interacting with the BitShares blockchain.
 
-[![rtd master](https://readthedocs.org/projects/uptick/badge/?version=latest)](http://uptick.readthedocs.io/en/latest/)
-[![codecov](https://codecov.io/gh/xeroc/uptick/branch/master/graph/badge.svg)](https://codecov.io/gh/xeroc/uptick)
-[![Travis master](https://travis-ci.org/xeroc/uptick.png?branch=master)](https://travis-ci.org/xeroc/uptick)
-[![Travis develop](https://travis-ci.org/xeroc/uptick.png?branch=develop)](https://travis-ci.org/xeroc/uptick)
+![](https://img.shields.io/pypi/v/uptick.svg?style=for-the-badge)
+![](https://img.shields.io/github/release/bitshares/uptick.svg?style=for-the-badge)
+![](https://img.shields.io/github/downloads/bitshares/uptick/total.svg?style=for-the-badge)
+![](https://img.shields.io/pypi/pyversions/uptick.svg?style=for-the-badge)
+![](https://img.shields.io/pypi/l/uptick.svg?style=for-the-badge)
+![](https://cla-assistant.io/readme/badge/bitshares/uptick)
 
-[![PyPI](https://img.shields.io/pypi/dm/uptick.svg?maxAge=2592000)]()
-[![PyPI](https://img.shields.io/pypi/dw/uptick.svg?maxAge=2592000)]()
+**Stable**
+
+[![docs master](https://readthedocs.org/projects/uptick/badge/?version=latest)](http://uptick.readthedocs.io/en/latest/)
+[![Travis master](https://travis-ci.org/bitshares/uptick.png?branch=master)](https://travis-ci.org/bitshares/uptick)
+[![codecov](https://codecov.io/gh/bitshares/uptick/branch/master/graph/badge.svg)](https://codecov.io/gh/bitshares/uptick)
+
 
 **Develop**
 
 [![docs develop](https://readthedocs.org/projects/uptick/badge/?version=develop)](http://uptick.readthedocs.io/en/develop/)
-[![Travis develop](https://travis-ci.org/xeroc/uptick.png?branch=develop)](https://travis-ci.org/xeroc/uptick)
-[![codecov develop](https://codecov.io/gh/xeroc/uptick/branch/develop/graph/badge.svg)](https://codecov.io/gh/xeroc/uptick)
-
-## Installation
-
-```
-pip3 install uptick
-```
+[![Travis develop](https://travis-ci.org/bitshares/uptick.png?branch=develop)](https://travis-ci.org/bitshares/uptick)
+[![codecov develop](https://codecov.io/gh/bitshares/uptick/branch/develop/graph/badge.svg)](https://codecov.io/gh/bitshares/uptick)
 
 ## Documentation
 
 The full-length documentation can be found on [http://uptick.rocks](http://uptick.rocks).
 
-## Public API
+## Installation
 
-The public API node at `this.uptick.rocks` serves as an experimental
-endpoint. 
+```
+sudo apt install python3-pip
+sudo pip3 install uptick
+```
 
-* Use it for prototyping of your tools
-* Use it for testing
-* Do not expect it to be reliable
-* Do not spam it with unnecessary load
+## Contributing
 
-# IMPORTANT NOTE
+uptick welcomes contributions from anyone and everyone. Please
+see our [guidelines for contributing](CONTRIBUTING.md) and the [code of
+conduct](CODE_OF_CONDUCT.md).
 
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-    THE SOFTWARE.
+### Discussion and Developers
+
+Discussions around development and use of this library can be found in a
+[dedicated Telegram Channel](https://t.me/pybitshares)
+
+### License
+
+A copy of the license is available in the repository's
+[LICENSE](LICENSE.txt) file.
